@@ -1,0 +1,345 @@
+/* Container */
+#apaf-search-bar-container {
+    position: sticky; /* Or fixed, depending on "Floating" req, sticky is often safer for layout */
+    top: 20px;
+    z-index: 999;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Let clicks pass through around the bar */
+    padding: 0 15px;
+}
+
+#apaf-search-bar {
+    background: #fff;
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: nowrap;
+    pointer-events: auto;
+    max-width: 1200px;
+    width: auto;
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    #apaf-search-bar {
+        flex-direction: column;
+        border-radius: 20px;
+        width: 100%;
+        align-items: stretch;
+    }
+}
+
+/* Elements */
+.apaf-toggle-group {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 30px;
+    padding: 3px;
+}
+
+.apaf-toggle-group label {
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.apaf-toggle-group input {
+    display: none;
+}
+
+.apaf-toggle-group span {
+    padding: 8px 20px;
+    border-radius: 25px;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.apaf-toggle-group input:checked + span {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #333;
+}
+
+/* Select2 overrides for pill look */
+.select2-container .select2-selection--single {
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    padding-left: 15px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 38px;
+    right: 10px;
+}
+
+/* Advanced Link */
+.apaf-advanced-link a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+/* Search Button */
+#apaf-search-btn {
+    background-color: #1F4E3D; /* Dark Green */
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+#apaf-search-btn:hover {
+    background-color: #163a2d;
+}
+
+/* MODAL */
+#apaf-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#apaf-modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 25px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.apaf-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.apaf-modal-header h3 { margin: 0; font-size: 18px; }
+#apaf-close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.apaf-filter-row {
+    margin-bottom: 20px;
+}
+.apaf-filter-row label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Checkbox Grid */
+.apaf-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+.apaf-checkbox-card {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+}
+.apaf-checkbox-card input {
+    position: absolute;
+    opacity: 0;
+}
+.apaf-checkbox-card span {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+.apaf-checkbox-card input:checked + span {
+    background: #1F4E3D;
+    color: #fff;
+    border-color: #1F4E3D;
+}
+
+/* Specs Buttons */
+.apaf-specs-row {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+.apaf-spec-col {
+    flex: 1;
+}
+.apaf-num-buttons {
+    display: flex;
+    gap: 5px;
+}
+.apaf-num-buttons button {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s;
+}
+.apaf-num-buttons button.active {
+    background: #1F4E3D;
+    color: #fff;
+    border-color: #1F4E3D;
+}
+
+/* Price Range */
+#apaf-price-slider {
+    margin-bottom: 15px;
+    height: 10px;
+}
+.noUi-connect {
+    background: #1F4E3D;
+}
+.apaf-price-inputs {
+    display: flex;
+    gap: 10px;
+}
+.apaf-price-inputs input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Financing Checkbox (Toggle style) */
+.apaf-toggle-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.apaf-toggle-check input { display: none; }
+.apaf-toggle-check .slider {
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    position: relative;
+    border-radius: 20px;
+    transition: 0.3s;
+    display: inline-block;
+}
+.apaf-toggle-check .slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    left: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.apaf-toggle-check input:checked + .slider {
+    background: #1F4E3D;
+}
+.apaf-toggle-check input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.apaf-modal-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+#apaf-apply-filters {
+    background: #1F4E3D;
+    color: #fff;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Results Grid */
+#apaf-results-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+.apaf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.apaf-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+.apaf-card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.apaf-card-body {
+    padding: 15px;
+}
+.apaf-card-title {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+.apaf-card-price {
+    color: #1F4E3D;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+}
+.apaf-card-specs {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
